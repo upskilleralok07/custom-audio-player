@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Audio Player</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="player">
+    <h2>🎵 Now Playing: <span id="track-title">Loading...</span></h2>
+
+    <audio id="audio" preload="metadata">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="controls">
+      <button id="prev">⏮️</button>
+      <button id="play-pause">▶️</button>
+      <button id="next">⏭️</button>
+    </div>
+    <p class="tagline">
+  🎓 Presented by Alok Sharma, Akshat Agrawal & Alok Singh Baghel <br>
+  🧑‍🏫 Submitted to: Neera Lal Ma'am
+</p>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
