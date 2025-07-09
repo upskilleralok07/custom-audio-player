@@ -6,17 +6,17 @@ const prevBtn = document.getElementById("prev");
 
 const playlist = [
   {
-    title: "Track 1 - Sample",
+    title: "Track 1",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     preload: "metadata"
   },
   {
-    title: "Track 2 - Sample",
+    title: "Track 2",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     preload: "none"
   },
   {
-    title: "Track 3 - Sample",
+    title: "Track 3",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
     preload: "auto"
   }
@@ -25,17 +25,15 @@ const playlist = [
 let currentTrack = 0;
 let isPlaying = false;
 
-// Load track by index
 function loadTrack(index) {
   const track = playlist[index];
   audio.src = track.src;
   audio.preload = track.preload;
   trackTitle.textContent = track.title;
   isPlaying = false;
-  updatePlayPauseButton();
+  updateButton();
 }
 
-// Play or pause the audio
 function togglePlayPause() {
   if (audio.paused) {
     audio.play();
@@ -44,37 +42,33 @@ function togglePlayPause() {
     audio.pause();
     isPlaying = false;
   }
-  updatePlayPauseButton();
+  updateButton();
 }
 
-// Update play/pause button text
-function updatePlayPauseButton() {
+function updateButton() {
   playPauseBtn.textContent = isPlaying ? "⏸️" : "▶️";
 }
 
-// Go to next track
 function nextTrack() {
   currentTrack = (currentTrack + 1) % playlist.length;
   loadTrack(currentTrack);
   audio.play();
   isPlaying = true;
-  updatePlayPauseButton();
+  updateButton();
 }
 
-// Go to previous track
 function prevTrack() {
   currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
   loadTrack(currentTrack);
   audio.play();
   isPlaying = true;
-  updatePlayPauseButton();
+  updateButton();
 }
 
-// Event listeners
 playPauseBtn.addEventListener("click", togglePlayPause);
 nextBtn.addEventListener("click", nextTrack);
 prevBtn.addEventListener("click", prevTrack);
 audio.addEventListener("ended", nextTrack);
 
-// Load the first track initially
+// Load first track on page load
 loadTrack(currentTrack);
